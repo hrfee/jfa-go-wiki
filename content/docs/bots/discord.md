@@ -1,0 +1,50 @@
+---
+title: "Discord Bot Setup"
+date: 2021-06-23T17:30:30+01:00
+draft: false
+---
+
+# Discord bot setup
+
+jfa-go can send notifications through Discord. You can also require it on sign-up to add a verification layer to the sign-up process for your server.
+
+To do this, you'll need to create a Discord bot.
+
+### 1: Create an application
+Visit [discord.com/developers](https://discord.com/developers) and log in. Press the "New Application" Button, enter a name, and press "Create".
+
+![new app](/discord/1.jpg)
+
+### 2: Go to the Bot tab
+You can leave the settings on this page alone. Open the side menu (if necessary), and open the "Bot" tab.
+
+![bot tab](/discord/2.jpg)
+
+### 3: Create the Bot
+Press the "Add Bot" button, and "Yes, do it!" to create the bot.
+
+![add bot](/discord/3.jpg)
+
+### 4: Enable privileged permissions
+jfa-go needs the privileged intent "Server Members" to present a list of users when you try to bind an existing Jellyfin account to a Discord one. Scroll down on the bot summary page to the "Privileged Gateway Intents" section, enable the "Server Members Intent", then press "Save Changes" when it pops up.
+
+![privileged permissions](/discord/4.jpg)
+
+### 5: Switch to the OAuth2 Tab
+Open the side menu (if necessary), and open the "OAuth2" tab.
+
+![oauth2 tab](/discord/5.jpg)
+
+### 6: Enable permissions, get Invite link
+Scroll down the page to the "Scopes" section, and check all the checkboxes shown below. Once done, press the "Copy" button to copy the link. **Visit the link to add the bot to your desired Discord server.**
+
+![bot permissions](/discord/6.jpg)
+
+### 7: Copy the token
+Switch back to the "Bot" tab, and press the "Copy" button to copy the bot token. In jfa-go, go to Settings > Telegram, enable it, and paste the token into the "API Token" box. Save and restart.
+
+![copy token](/discord/7.jpg)
+![paste here](/discord/8.jpg)
+
+### 8: Done!
+Once you've restarted, you should be able to add new users in the Account tab, and link your discord on the sign-up page.

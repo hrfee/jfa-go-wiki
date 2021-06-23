@@ -1,0 +1,27 @@
+baseURL = "https://jfa-go.hrfee.dev"
+languageCode = "en"
+title = "jfa-go wiki"
+theme = "book"
+copyright = "&copy; <a href=\"https://github.com/hrfee\">Harvey Tindall</a> 2021"
+Paginate = 1
+enableRobotsTXT = true
+enableGitInfo = true
+
+[params]
+BookMenuBundle = "/menu"
+BookTheme = 'auto'
+BookRepo = 'https://github.com/hrfee/jfa-go-wiki'
+BookComments = false
+
+[params.info]
+homeTitle = "jfa-go wiki"
+poweredby = true
+related = false
+codeCopy = true
+
+[params.social]
+github = "hrfee"
+email = "hrfee@protonmail.ch"
+
+[params.social.config]
+platforms = ["github", "email"]
