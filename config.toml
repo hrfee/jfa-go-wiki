@@ -1,4 +1,4 @@
-baseURL = "https://jfa-go.hrfee.dev"
+baseURL = "https://jfa-go.com"
 languageCode = "en"
 title = "jfa-go wiki"
 theme = "book"
@@ -21,7 +21,7 @@ codeCopy = true
 
 [params.social]
 github = "hrfee"
-email = "hrfee@protonmail.ch"
+email = "hrfee@hrfee.dev"
 
 [params.social.config]
 platforms = ["github", "email"]
