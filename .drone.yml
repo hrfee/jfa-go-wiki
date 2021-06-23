@@ -1,0 +1,34 @@
+---
+name: jfa-go-wiki
+kind: pipeline
+type: docker
+
+steps:
+  - name: deploy
+    image: appleboy/drone-ssh
+    volumes:
+      - name: ssh_key
+        path: /root/drone_rsa
+    settings:
+      host:
+        from_secret: ssh_host
+      username:
+        from_secret: ssh_username
+      port:
+        from_secret: ssh_port
+      volumes:
+        - /root/.ssh/docker-build:/root/drone_rsa
+      key_path: /root/drone_rsa
+      command_timeout: 10m
+      script:
+        - /mnt/buildx/jfa-go-wiki/build.sh
+trigger:
+  branch:
+    - main
+  event:
+    exclude:
+      - pull_request
+volumes:
+  - name: ssh_key
+    host:
+      path: /root/.ssh/docker-build
