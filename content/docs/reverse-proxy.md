@@ -88,7 +88,5 @@ Taken from [#53](https://github.com/hrfee/jfa-go/issues/53).
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.jfa-go.rule=Host(`services.${DOMAIN}`) && PathPrefix(`/jfa`)"
-      - "traefik.http.middlewares.jfa-go-strip.stripprefix.prefixes=/jfa"
       - "traefik.http.routers.jfa-go.tls=true"
-      - "traefik.http.routers.jfa-go.middlewares=jfa-go-strip@docker"
 ```
