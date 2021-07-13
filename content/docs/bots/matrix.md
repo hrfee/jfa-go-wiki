@@ -30,7 +30,7 @@ Go to Settings and press the "+" button next to Matrix.
 ![linking matrix to jfa-go](/matrix/4.png)
 
 Fill in the:
-* Home server address (If you used the default on element.io, this will be `https://matrix.org`.
+* Home server address (If you used the default on element.io, this will be `https://matrix.org`.)
 * Username (`@<your username>:<your homeserver>`), for example, `@jfa-bot:matrix.org`.
 * Password
 

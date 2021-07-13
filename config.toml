@@ -1,4 +1,4 @@
-baseURL = "https://jfa-go.com"
+baseURL = "https://wiki.jfa-go.com"
 languageCode = "en"
 title = "jfa-go wiki"
 theme = "book"
