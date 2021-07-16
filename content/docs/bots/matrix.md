@@ -45,3 +45,9 @@ If adding your account through the wizard in jfa-go doesn't work, you can get th
 * Select "Help & About" on the right, and scroll down to the Advanced section. 
 * Click the dropdown next to "Access token", and copy the token.
 * In jfa-go, go to Settings > Matrix. Enable it, and paste the access token into the token box. Add your home server and user ID, then apply.
+
+## End-to-end encryption
+
+There is very experimental support for end-to-end encryption, however you must compile jfa-go manually to enable it with `make all E2EE=on`. After compilation, checking "Advanced settings" in Settings will show a toggle for it under the Matrix section. Receiving messages is currently broken, so the `!lang` command will not work for users. 
+
+If you have any know-how on implementing this in any language (preferably with one of the `mautrix` libraries), help would be appreciated.
