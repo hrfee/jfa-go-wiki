@@ -22,11 +22,11 @@ Move the newly created "jfa-go.service" file to ~/.config/systemd/user (Creating
 Then run "systemctl --user daemon-reload".
 You can then run:
 
-systemctl --user start jfa-go
+To start: "systemctl --user start jfa-go"
 
-To stop: To restart: systemctl --user stop jfa-go
+To stop: "systemctl --user stop jfa-go"
 
-systemctl --user stop jfa-go
+To restart: "systemctl --user restart jfa-go"
 ```
 
 ## I closed jfa-go during setup, and now it's broken/i can't get back to it.
@@ -40,7 +40,7 @@ Try deleting the config directory. When you first run jfa-go, it will print some
 In this case, `/tmp/jfa-go` is the config directory. Delete it, and run the program again to start setup again.
 
 If you're using a build with a tray icon, you won't see this message, so here's some common paths:
-* Linux: `~/.jfa-go/config.ini`
+* Linux: `~/.config/jfa-go/config.ini`
 * Windows: `C:\Users\<your username>\AppData\Roaming\jfa-go\config.ini`
 * macOS: `~/Library/Application Support/jfa-go/config.ini`
 
