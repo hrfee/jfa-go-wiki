@@ -14,6 +14,7 @@ headless = true
 - [Build from source]({{< relref "/docs/build/" >}})
   - [Binaries]({{< relref "/docs/build/binary" >}})
   - [Docker]({{< relref "/docs/build/docker" >}})
+  - [Development]({{< relref "/docs/build/dev" >}})
 - [Password Resets outside local network]({{< relref "/docs/password-resets" >}})
 - [Reverse Proxying]({{< relref "/docs/reverse-proxy" >}})
 - [TLS Setup]({{< relref "/docs/tls" >}})

@@ -26,21 +26,17 @@ The main dependencies of the program will be automatically downloaded on compila
 ```shell
 $ git clone https://github.com/hrfee/jfa-go
 $ cd jfa-go
-$ make all # [DEBUG=on] [INTERNAL=off] [UPDATER=on/docker] [TRAY=on] [GOESBUILD=on] [RACE=on]
+$ make all # [DEBUG=on] [INTERNAL=off] [UPDATER=on/docker] [TRAY=on] [GOESBUILD=on] [RACE=on] [...]
 $ ls build/
 jfa-go
 ```
 A Makefile is provided, which requires the `make` command. Simply clone the repository and run `make all` to grab all necessary dependencies for go/python/node, compile everything and place the executable and app data inside `build/`. You can optionally compress the executable by running `make compress` after.
-* You can add the following flags with `make all FLAGNAME=VALUE`:
-  * `DEBUG=on`: doesn't strip binaries and includes typescript sourcemaps.
-  * `INTERNAL=off`: Defaults to on, this disables embedding so assets are stored in the `data/` folder next to the binary. Useful for customizing after compilation.
-  * `UPDATER=on/off/docker`: Enables/disables the updater, which pings [build.hrfee.pw](https://builds.hrfee.pw) every 30 mins for new updates. New updates are shown with a download link to the user. When `INTERNAL=on`, updates are automatically downloaded, and installed upon request.
-  * `TRAY=on`: Enables a tray icon, which lets you start/stop/autostart on login. For linux, requires `libappindicator3-dev` for debian or the equivalent on other distributions.
-  * `RACE=on`: Compile with the go race detector included.
 
 * If you get an error from npm regarding esbuild, this is because a precompiled binary for your system's architecture isn't available on npm. run `make all GOESBUILD=on` instead to have it compiled instead.
 
 * You can optionally provide the path/name of the `go` executable manually with `make all GOBINARY=<path to go>`.
+
+* More build-time variables exist, which are explained on the [contributing page](/docs/build/dev).
 
 ## Goreleaser
 [goreleaser](https://github.com/goreleaser/goreleaser) is used to publish the packages seen in the release section. The `scripts/version.sh` wrapper generates the version and provides it to goreleaser with an environment variable.

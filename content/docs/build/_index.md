@@ -6,4 +6,4 @@ draft: false
 
 # Building from source
 
-See the sidebar for instructions for building a binary or a Docker container.
+See the sidebar for instructions for building a binary or Docker container, as well as helpful information for those wishing to contribute.
