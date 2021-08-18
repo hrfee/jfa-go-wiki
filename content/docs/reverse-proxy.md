@@ -90,3 +90,20 @@ Taken from [#53](https://github.com/hrfee/jfa-go/issues/53).
       - "traefik.http.routers.jfa-go.rule=Host(`services.${DOMAIN}`) && PathPrefix(`/jfa`)"
       - "traefik.http.routers.jfa-go.tls=true"
 ```
+
+## Caddy2
+From [#133](https://github.com/hrfee/jfa-go/discussions/133), Credit to [robocrax](https://github.com/robocrax).
+```Caddyfile
+jellyfin {
+
+    # rest of jellyfin config
+
+    reverse_proxy /Users/ForgotPassword localhost:8096,
+    reverse_proxy /Users/ForgotPassword/Pin localhost:8096 {
+        header_up X-Forwarded-For <any local ip address>
+    }
+
+    reverse_proxy localhost:8096
+
+}
+```
