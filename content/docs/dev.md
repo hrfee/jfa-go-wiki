@@ -42,3 +42,9 @@ Prefix each of these with `make DEBUG=on `:
 * `TAGS=<tags>`: Passed to `go build -tags`.
 * `OS=<os>`: Unrelated to GOOS, if set to `windows`, `-H=windowsgui` is passed to ldflags, which stops a windows terminal popping up when run.
 * `RACE=on/off`: If on, compiles with the go race detector included.
+
+# Web API
+
+Static Web API docs can be accessed by clicking [Web API Docs](https://api.jfa-go.com) on the sidebar or here.
+
+A live version of the swagger documentation is available by running jfa-go with the `-swagger` argument to make it available at `http://localhost:8056/swagger/index.html`. If you're introducing any new routes when working on the API, make sure to give them a proper description above the function (see other routes in `api.go` as well as the [swaggo](https://github.com/swaggo/swag) documentation), and to put it in the appropriate category. If a struct used as a parameter or return type needs explanation, put descriptions of each field as a comment next to it (see [models.go](https://github.com/hrfee/jfa-go/blob/main/models.go)).

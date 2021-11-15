@@ -36,7 +36,7 @@ lang/
 ├─ setup/
 │  ├─ en-us.json
 ```
-Copy one of the internal language files from `lang/<admin|form|pwreset|telegram|common|setup>` into it and change the name in the file, this will appear in settings. You can also provide a fallback language (anything you don't translate will fall back to this language.
+Copy one of the internal language files from `lang/<admin|form|pwreset|telegram|common|setup>` into it and change the name in the file, this will appear in settings. You can also provide a fallback language (anything you don't translate will fall back to this language).
 ```json
 {
     "meta": {
