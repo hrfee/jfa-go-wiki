@@ -36,7 +36,12 @@ Open the side menu (if necessary), and open the "OAuth2" tab.
 ![oauth2 tab](/discord/5.jpg)
 
 ### 6: Enable permissions, get Invite link
-Scroll down the page to the "Scopes" section, and check all the checkboxes shown below. Once done, press the "Copy" button to copy the link. **Visit the link to add the bot to your desired Discord server.**
+Scroll down the page to the "Scopes" section, check all the checkboxes shown below, and save. Once done, press the "Copy" button below the Client ID to copy the it. **Replace the `YOUR_CLIENT_ID` in the below link and visit it to add the bot to your desired Discord server.**
+
+```url
+https://discordapp.com/oauth2/authorize?&client_id=YOUR_CLIENT_ID&scope=bot&permissions=19457
+```
+
 
 ![bot permissions](/discord/6.jpg)
 
