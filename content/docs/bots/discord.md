@@ -46,7 +46,7 @@ https://discordapp.com/oauth2/authorize?&client_id=YOUR_CLIENT_ID&scope=bot&perm
 ![bot permissions](/discord/6.jpg)
 
 ### 7: Copy the token
-Switch back to the "Bot" tab, and press the "Copy" button to copy the bot token. In jfa-go, go to Settings > Telegram, enable it, and paste the token into the "API Token" box. Save and restart.
+Switch back to the "Bot" tab, and press the "Copy" button to copy the bot token. In jfa-go, go to Settings > Discord, enable it, and paste the token into the "API Token" box. Save and restart.
 
 ![copy token](/discord/7.jpg)
 ![paste here](/discord/8.jpg)
