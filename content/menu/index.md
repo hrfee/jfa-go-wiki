@@ -6,6 +6,7 @@ headless = true
 - [FAQ]({{< relref "/docs/faq" >}})
 - [Chat bots]({{< relref "/docs/bots" >}})
   - [Discord]({{< relref "/docs/bots/discord" >}})
+    - [FAQ]({{< relref "/docs/bots/discord-faq" >}})
   - [Telegram]({{< relref "/docs/bots/telegram" >}})
   - [Matrix]({{< relref "/docs/bots/matrix" >}})
 - Customization
