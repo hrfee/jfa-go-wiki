@@ -39,7 +39,7 @@ Open the side menu (if necessary), and open the "OAuth2" tab.
 Scroll down the page to the "Scopes" section, check all the checkboxes shown below, and save. Once done, press the "Copy" button below the Client ID to copy it. **Replace the `YOUR_CLIENT_ID` in the below link and visit it to add the bot to your desired Discord server.**
 
 ```url
-https://discordapp.com/oauth2/authorize?&client_id=YOUR_CLIENT_ID&scope=bot&permissions=268454913
+https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=2415938561&scope=applications.commands%20bot
 ```
 
 
