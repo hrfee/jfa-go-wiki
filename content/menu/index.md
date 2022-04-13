@@ -16,7 +16,7 @@ headless = true
   - [Binaries]({{< relref "/docs/build/binary" >}})
   - [Docker]({{< relref "/docs/build/docker" >}})
 - [Development]({{< relref "/docs/dev" >}})
-  - [Web API Docs](https:/api.jfa-go.com)
+  - [Web API Docs](https://api.jfa-go.com)
 - [Password Resets outside local network]({{< relref "/docs/password-resets" >}})
 - [Reverse Proxying]({{< relref "/docs/reverse-proxy" >}})
 - [TLS Setup]({{< relref "/docs/tls" >}})
