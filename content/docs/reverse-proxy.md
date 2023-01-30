@@ -54,7 +54,7 @@ server {
 
     # rest of your own config
 
-    location ~ ^/accounts(.*)$ {
+    location ^~ /accounts {
         # No longer necessary on versions after v0.3.0
         # rewrite ^/accounts/(.*) /$1 break;
         
