@@ -10,7 +10,7 @@ Reverse proxying should be really easy.
 * If you're proxying to a subdomain, e.g `accounts.jellyf.in/`, a `proxy_pass` or equivalent is enough.
 * Proxying to a subfolder is only supported for versions > 0.2.2.
   * Versions > v0.3.0 don't need the URL Base stripped, but should be proxied to `<jfa-go address>/<URL base>` instead.
-  * **Make sure to set the URL base in Settings > General (`ui > url_base` in config.ini).**
+  * **Make sure to set the URL base ("Reverse Proxy subfolder") in Settings > General (`ui > url_base` in config.ini).**
   * If you're placing it under the same subdomain as Jellyfin, make sure no CSP header is set for jfa-go's subfolder (see example below for NGINX).
   * Versions <= v0.3.0 require the proxy to strip the URL base.
 
@@ -39,7 +39,7 @@ server {
 
 ## NGINX (Subfolder on `/accounts` Jellyfin subdomain)
 
-Make sure to set your URL Base to `/accounts` in Settings > General.
+Make sure to set your Reverse Proxy subfolder to `/accounts` in Settings > General.
 credit to [IngwiePhoenix](https://github.com/IngwiePhoenix).
 ```nginx
 server {
