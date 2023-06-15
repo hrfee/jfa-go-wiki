@@ -12,6 +12,7 @@ headless = true
 - Customization
   - [Emails/Messages]({{< relref "/docs/emails" >}})
   - [Appearance]({{< relref "/docs/appearance" >}})
+  - [(re)CAPTCHA]({{< relref "/docs/captcha" >}})
 - [Build from source]({{< relref "/docs/build/" >}})
   - [Binaries]({{< relref "/docs/build/binary" >}})
   - [Docker]({{< relref "/docs/build/docker" >}})
