@@ -1,0 +1,95 @@
+<table>
+    <tbody>
+        <tr>
+            <th>Methods</th>
+            <th>Pros</th>
+            <th>Cons</th>
+        </tr>
+        <tr>
+            <td>PIN Reset</td>
+            <td>
+                <ul>
+                    <li>Initiated through Jellyfin</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>
+                        Can confuse user
+                        <ul>
+                            <li>Jellyfin doesn't tell you to check email/discord/telegram/matrix for a message with a PIN.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        No way to enforce password requirements
+                        <ul>
+                            <li>User's password is set to the PIN, user must set their new password through Jellyfin.</li>
+                        </ul>
+                    </li>
+                    <li>Ombi Password will not change (if enabled)</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Link Reset</td>
+            <td>
+                <ul>
+                    <li>User doesn't have to keep Jellyfin's Password Reset page open</li>
+                    <li>User doesn't have to type anything</li>
+                    <li>Reminds user to change their password after it resets to the PIN code</li>
+                    <li>Automatically changes password to PIN on Ombi</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>Same as above</li>
+                    <li>User will also have to manually change their Ombi password from the PIN</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>Internal Reset</td>
+            <td>
+                <ul>
+                    <li>
+                        Enforces password requirements
+                        <ul>
+                            <li>Users are shown a page similar to the "Create Account" form</li>
+                        </ul>
+                    </li>
+                    <li>New password is also applied to Ombi</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>Can confuse user in the same way as the above</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>"My Account" Reset</td>
+            <td>
+                <ul>
+                    <li>Performed in the same place as other account management tasks</li>
+                    <li>
+                        Explains itself better than other methods
+                        <ul>
+                            <li>The page tells the user to check their inbox for a link</lu>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>
+                        "My Account" page may not be familiar to user
+                        <ul>
+                            <li>For this feature to be used, users must know the "My Account" page exists</li>
+                            <li>The page is already referenced on the signup form, but mentioning it on your Jellyfin instance or app portal might be a good idea.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>

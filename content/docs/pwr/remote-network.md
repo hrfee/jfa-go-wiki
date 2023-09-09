@@ -14,7 +14,7 @@ If you're using a reverse proxy, Jellyfin knows the real IP of a user through th
 
 ***Example NGINX config***
 ```nginx
-    # add to your \`server {\` section
+    # add to your `server { ... }` block
 
     # rest of jellyfin config
 

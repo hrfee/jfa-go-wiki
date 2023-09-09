@@ -8,7 +8,7 @@ draft: false
 
 ([issue](https://github.com/hrfee/jellyfin-accounts/issues/12))
 
-* The best way to get around this (if you're using a reverse proxy) is to selectively not send the users real IP to jellyfin on the paths that are used for password resets. Read more and see an example [here]({{<relref "/docs/password-resets" >}}).
+* The best way to get around this (if you're using a reverse proxy) is to selectively not send the users real IP to jellyfin on the paths that are used for password resets. Read more and see an example [here]({{<relref "/docs/pwr/remote-network" >}}).
 
 * Another method is to tell Jellyfin to treat all traffic as local. I don't recommend this as it stops you from using other features like remote bandwidth limiting. In Jellyfin, go to Dashboard > Networking (under Advanced), and set the 'LAN networks' setting to `0.0.0.0/0`.
 
@@ -54,7 +54,7 @@ Make sure to check the ports you are using, as generally they correspond to the 
 
 ## Does this need to be installed on the same host as Jellyfin?
 
-Not necessarily. For invite functionality, an http connection is only necessary. However, password resets require jfa-go to be able to access Jellyfin's installation directory, so you'll need to use SMB or similar to mount it.
+Not necessarily. For invite functionality, an http connection is only necessary. Password resets through the "User Page" Feature will also function, see [this note](/docs/pwr/#method-4-my-account-reset). However, password resets through the Jellyfin UI require jfa-go to be able to access its config directory, so you'll need to use SMB or similar to mount it. See [this page](/docs/pwr/#prerequisite-for-methods-1-3) for help finding the correct directory.
 
 ## Can i `go get` this repository?
 No, because the supporting files (CSS, email templates, etc.) need to be compiled and placed next to the executable before it will run, and `go get` will only compile the app itself.
