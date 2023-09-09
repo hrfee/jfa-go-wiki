@@ -15,7 +15,7 @@ required:
     go >= 1.16
     node.js and npm (for tsc/esbuild, a17t, mjml, remixicon, markdown parser & uncss)
 optional:
-    libappindicator3-dev or equivalent (if building with tray icon on linux)
+    libayatana-appindicator or equivalent (if building with tray icon on linux)
     gcc-mingw-w64-x86-64 or equivalent (if cross-compiling for windows on linux/macOS)
     upx (to compress the executable)
 ```
