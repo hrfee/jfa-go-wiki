@@ -44,10 +44,10 @@ A Makefile is provided, which requires the `make` command. Simply clone the repo
 The executables will be placed in `dist/`.
 * To generate executables for multiple platforms:
 ```shell
-$ ./scripts/version.sh goreleaser build --snapshot --rm-dist
+$ ./scripts/version.sh goreleaser build --snapshot --clean
 ```
 
 * To generate package archives that include `LICENSE` and `README.md`:
 ```shell
-$ ./scripts/version.sh goreleaser --snapshot --skip-publish --rm-dist
+$ ./scripts/version.sh goreleaser --snapshot --skip-publish --clean
 ```
