@@ -56,6 +56,10 @@ Make sure to check the ports you are using, as generally they correspond to the 
 
 This should be unlikely to happen post [f6fdd41](https://github.com/hrfee/jfa-go/commit/f6fdd41b35ec30b56f79690a288eff9575f8fa07), but if it does, you can increase the number of tries jfa-go makes to connect to Jellyfin before failing. In Settings > Advanced, increase the "Initial auth retry count" or "Initial auth retry gap (seconds)" until jfa-go waits long enough.
 
+## I set up the Ombi integration, now i'm locked out of Ombi.
+
+Sorry if this has occurred, you can regain access by following [the guide here]({{<relref "/docs/ombi" >}}).
+
 ## Does this need to be installed on the same host as Jellyfin?
 
 Not necessarily. For invite functionality, an http connection is only necessary. Password resets through the "User Page" Feature will also function, see [this note](/docs/pwr/#method-4-my-account-reset). However, password resets through the Jellyfin UI require jfa-go to be able to access its config directory, so you'll need to use SMB or similar to mount it. See [this page](/docs/pwr/#prerequisite-for-methods-1-3) for help finding the correct directory.

@@ -1,0 +1,2 @@
+{{ $image := (.Site.Resources.GetMatch (.Get 0)).Resize "50x50" }}
+<img src="{{ $image.RelPermalink }}">

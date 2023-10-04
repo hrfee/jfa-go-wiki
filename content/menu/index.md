@@ -9,6 +9,7 @@ headless = true
     - [FAQ]({{< relref "/docs/bots/discord-faq" >}})
   - [Telegram]({{< relref "/docs/bots/telegram" >}})
   - [Matrix]({{< relref "/docs/bots/matrix" >}})
+- [Ombi]({{< relref "/docs/ombi" >}})
 - Customization
   - [Emails/Messages]({{< relref "/docs/emails" >}})
   - [Appearance]({{< relref "/docs/appearance" >}})
