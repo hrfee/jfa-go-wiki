@@ -32,6 +32,7 @@ If you haven't got a `.bak` file, you should be able to find them in `<your data
 * Linux: `~/.config/jfa-go/backups`,
 * Windows: `C:\Users\<your username>\AppData\Roaming\jfa-go\backups`,
 * macOS: `~/Library/Application Support/jfa-go/backups`
+* Docker: `/data/backups`
 
 Once you've found a file, simply run `<your usual jfa-go start command> -restore <bak file path>`.
 The application will start normally after the restore has completed.
