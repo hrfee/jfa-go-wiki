@@ -10,7 +10,7 @@ Reverse proxying should be really easy.
 * If you're proxying to a subdomain, e.g `accounts.jellyf.in/`, a `proxy_pass` or equivalent is enough.
 * If you choose to use jfa-go's IP logging, you'll need to make sure the proxy passes in the correct IP.
   * `X-Real-IP` or `X-Forwarded-For` will work.
-  * The nginx and caddy examples includes at least one of these headers. You'll have to figure it out yourself for other proxies.
+  * The nginx and IIS examples includes at least one of these headers. You'll have to figure it out yourself for other proxies.
 * Proxying to a subfolder is only supported for versions > 0.2.2.
   * Versions > v0.3.0 don't need the URL Base stripped, but should be proxied to `<jfa-go address>/<URL base>` instead.
   * **Make sure to set the URL base ("Reverse Proxy subfolder") in Settings > General (`ui > url_base` in config.ini).** It should be the subfolder **only**, i.e. `/accounts`.
@@ -102,19 +102,62 @@ Taken from [#53](https://github.com/hrfee/jfa-go/issues/53).
       - "traefik.http.routers.jfa-go.tls=true"
 ```
 
-## Caddy2
-From [#133](https://github.com/hrfee/jfa-go/discussions/133), Credit to [robocrax](https://github.com/robocrax).
-```Caddyfile
-jellyfin {
+## IIS
+From [#324](https://github.com/hrfee/jfa-go/discussions/324), credit to [kimboslice99](https://github.com/kimboslice99).
 
-    # rest of jellyfin config
-
-    reverse_proxy /Users/ForgotPassword localhost:8096,
-    reverse_proxy /Users/ForgotPassword/Pin localhost:8096 {
-        header_up X-Forwarded-For <any local ip address>
-    }
-
-    reverse_proxy localhost:8096
-
-}
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+config requires URL Rewrite and Application Request Routing + run these commands from an elevated PowerShell 5.1 prompt
+Set-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter "system.webServer/proxy" -name "preserveHostHeader" -value "True"
+Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter "system.webServer/rewrite/allowedServerVariables" -name "." -value @{name='HTTP_X_FORWARDED_PROTOCOL'}
+Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter "system.webServer/rewrite/allowedServerVariables" -name "." -value @{name='HTTP_X_FORWARDED_PROTO'}
+Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter "system.webServer/rewrite/allowedServerVariables" -name "." -value @{name='HTTP_X_REAL_IP'}
+Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter "system.webServer/rewrite/allowedServerVariables" -name "." -value @{name='HTTP_X_FORWARDED_HOST'}
+Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter "system.webServer/rewrite/allowedServerVariables" -name "." -value @{name='HTTP_X_FORWARDED_PORT'}
+-->
+<configuration>
+	<system.webServer>
+        <rewrite>
+            <rules>
+            <clear />
+                <rule name="Redirect to https" stopProcessing="true">
+                    <match url=".*" />
+                    <conditions logicalGrouping="MatchAny" trackAllCaptures="false">
+                        <add input="{HTTPS}" pattern="off" />
+                    </conditions>
+                    <action type="Redirect" url="https://{HTTP_HOST}{REQUEST_URI}" redirectType="Found" />
+                </rule><!-- These rules add X-Forwarded-Protocol -->
+                <rule name="ForwardedHttps">
+                    <match url=".*" />
+                    <conditions logicalGrouping="MatchAll" trackAllCaptures="false">
+                        <add input="{HTTPS}" pattern="On" />
+                    </conditions>
+                    <serverVariables>
+                        <set name="HTTP_X_FORWARDED_PROTOCOL" value="https" />
+                        <set name="HTTP_X_FORWARDED_PROTO" value="https" />
+                    </serverVariables>
+                </rule>
+                <rule name="ForwardedHttp">
+                    <match url=".*" />
+                    <conditions logicalGrouping="MatchAll" trackAllCaptures="false">
+                        <add input="{HTTPS}" pattern="Off" />
+                    </conditions>
+                    <serverVariables>
+                        <set name="HTTP_X_FORWARDED_PROTOCOL" value="http" />
+                        <set name="HTTP_X_FORWARDED_PROTO" value="http" />
+                    </serverVariables>
+                </rule>
+                <rule name="jellyfinaccounts">
+                    <match url="(.*)" />
+                    <serverVariables>
+                        <set name="HTTP_X_FORWARDED_HOST" value="{HTTP_HOST}" />
+                        <set name="HTTP_X_REAL_IP" value="{REMOTE_ADDR}" />
+                    </serverVariables>
+                    <action type="Rewrite" url="http://localhost:8056/accounts/{R:1}" />
+                </rule>
+            </rules>
+        </rewrite>
+    </system.webServer>
+</configuration>
 ```

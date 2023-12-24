@@ -29,4 +29,20 @@ If you're using a reverse proxy, Jellyfin knows the real IP of a user through th
     }
 ```
 
+***Example Caddy config*** (from [#133](https://github.com/hrfee/jfa-go/discussions/133), Credit to [robocrax](https://github.com/robocrax))
+```Caddyfile
+jellyfin {
+
+    # rest of jellyfin config
+
+    reverse_proxy /Users/ForgotPassword localhost:8096,
+    reverse_proxy /Users/ForgotPassword/Pin localhost:8096 {
+        header_up X-Forwarded-For <any local ip address>
+    }
+
+    reverse_proxy localhost:8096
+
+}
+```
+
 I use nginx personally so don't have experience with other proxies like caddy or apache. Feel free to create an PR/Issue or contact me if you want to add an example.
