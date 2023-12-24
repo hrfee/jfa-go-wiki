@@ -8,9 +8,12 @@ draft: false
 
 Reverse proxying should be really easy.
 * If you're proxying to a subdomain, e.g `accounts.jellyf.in/`, a `proxy_pass` or equivalent is enough.
+* If you choose to use jfa-go's IP logging, you'll need to make sure the proxy passes in the correct IP.
+  * `X-Real-IP` or `X-Forwarded-For` will work.
+  * The nginx and caddy examples includes at least one of these headers. You'll have to figure it out yourself for other proxies.
 * Proxying to a subfolder is only supported for versions > 0.2.2.
   * Versions > v0.3.0 don't need the URL Base stripped, but should be proxied to `<jfa-go address>/<URL base>` instead.
-  * **Make sure to set the URL base ("Reverse Proxy subfolder") in Settings > General (`ui > url_base` in config.ini).**
+  * **Make sure to set the URL base ("Reverse Proxy subfolder") in Settings > General (`ui > url_base` in config.ini).** It should be the subfolder **only**, i.e. `/accounts`.
   * If you're placing it under the same subdomain as Jellyfin, make sure no CSP header is set for jfa-go's subfolder (see example below for NGINX).
   * Versions <= v0.3.0 require the proxy to strip the URL base.
 
