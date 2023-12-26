@@ -91,7 +91,7 @@ server {
 }
 ```
 
-## Traefik (subfolder on `/jfa` subfolder)
+## Traefik (`/jfa` subfolder)
 Taken from [#53](https://github.com/hrfee/jfa-go/issues/53).
 ```yaml
   jfa-go:
@@ -102,8 +102,11 @@ Taken from [#53](https://github.com/hrfee/jfa-go/issues/53).
       - "traefik.http.routers.jfa-go.tls=true"
 ```
 
-## IIS
+## IIS (`/accounts` subfolder)
 From [#324](https://github.com/hrfee/jfa-go/discussions/324), credit to [kimboslice99](https://github.com/kimboslice99).
+This config is for the `/accounts` subfolder. To change, adjust the `<action type="Rewrite"...` line near the bottom to
+`<action type="Rewrite" url="http://localhost:8056/insert_subfolder_path_here/{R:1}" />`
+
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
