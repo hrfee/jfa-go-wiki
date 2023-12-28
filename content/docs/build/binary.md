@@ -12,8 +12,8 @@ To build, you need to compile the typescript and go, and generate email template
 required:
     git
     python >= 3.6
-    go >= 1.16
-    node.js and npm (for tsc/esbuild, a17t, mjml, remixicon, markdown parser & uncss)
+    go >= 1.20
+    node.js and npm (for tsc/esbuild, tailwind/a17t, mjml, remixicon, markdown parser & uncss)
 optional:
     libayatana-appindicator or equivalent (if building with tray icon on linux)
     gcc-mingw-w64-x86-64 or equivalent (if cross-compiling for windows on linux/macOS)
@@ -36,7 +36,7 @@ A Makefile is provided, which requires the `make` command. Simply clone the repo
 
 * You can optionally provide the path/name of the `go` executable manually with `make all GOBINARY=<path to go>`.
 
-* More build-time variables exist, which are explained on the [contributing page](/docs/build/dev).
+* More build-time variables exist, which are explained on the [contributing page](/docs/dev).
 
 ## Goreleaser
 [goreleaser](https://github.com/goreleaser/goreleaser) is used to publish the packages seen in the release section. The `scripts/version.sh` wrapper generates the version and provides it to goreleaser with an environment variable.

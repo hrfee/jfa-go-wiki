@@ -17,15 +17,17 @@ The Makefile is more suited towards development than other build methods, and pr
 
 Prefix each of these with `make DEBUG=on `:
 * `all` will download deps and build everything. The executable and data will be placed in `build`. This is only necessary the first time.
+* `quick` skips a couple steps, namely `npm`, `swagger`, and `email` to make things a bit quicker when you're not working on that sorta stuff.
 * `npm` will download all node.js build-time dependencies.
 * `compile` will only compile go code into the `build/jfa-go` executable.
 * `typescript` will compile typescript w/ sourcemaps into `build/data/web/js`.
 * `bundle-css` will bundle CSS and place it in `build/data/web/css`.
-  * `inline` will inline the css and javascript used in the single-file crash report webpage.
+* `inline-css` will inline the css and javascript used in the single-file crash report webpage.
 * `configuration` will generate the `config-base.json` (used to render settings in the web ui) and `config-default.ini` and put them in `build/data`.
 * `email` will compile email mjml, and copy the text versions in to `build/data`.
 * `swagger`: generates swagger documentation for the API.
-* `copy` will copy iconography, html, language files and static data into `build/data`.
+* `variants-html` will copy over html files and runs the `missings-colors.js` script to insert missing dark mode tags.
+* `copy` will copy iconography, language files and other static data into `build/data`.
 
 ## Environment variables
 
@@ -37,6 +39,7 @@ Prefix each of these with `make DEBUG=on `:
 * `GOBINARY=<path to go>`: Alternative path to go executable. Useful for testing with unstable go releases.
 * `VERSION=v<semver>`: Alternative verision number, useful to test update functionality.
 * `COMMIT=<short commit>`: Self explanatory.
+* `BUILDTIME=<unix timestamp>`: Build timestamp to be shown in "About", and used for update detection.
 * `LDFLAGS=<ldflags>`: Passed to `go build -ldflags`.
 * `E2EE=on/off`: Enable/disable end-to-end encryption support for Matrix, which is currently very broken. Must subsequently be enabled (with Advanced settings enabled) in Settings > Matrix.
 * `TAGS=<tags>`: Passed to `go build -tags`.
@@ -47,4 +50,4 @@ Prefix each of these with `make DEBUG=on `:
 
 Static Web API docs can be accessed by clicking [Web API Docs](https://api.jfa-go.com) on the sidebar or here.
 
-A live version of the swagger documentation is available by running jfa-go with the `-swagger` argument to make it available at `http://localhost:8056/swagger/index.html`. If you're introducing any new routes when working on the API, make sure to give them a proper description above the function (see other routes in `api.go` as well as the [swaggo](https://github.com/swaggo/swag) documentation), and to put it in the appropriate category. If a struct used as a parameter or return type needs explanation, put descriptions of each field as a comment next to it (see [models.go](https://github.com/hrfee/jfa-go/blob/main/models.go)).
+A live version of the swagger documentation is available by running jfa-go with the `-swagger` argument to make it available at `http://localhost:8056/swagger/index.html`. If you're introducing any new routes when working on the API, make sure to give them a proper description above the function (see other routes in `api.go` as well as the [swaggo](https://github.com/swaggo/swag) documentation), and to put it in the appropriate category and/or file (e.g. `api-discord.go` for a discord-only method). If a struct used as a parameter or return type needs explanation, put descriptions of each field as a comment next to it (see [models.go](https://github.com/hrfee/jfa-go/blob/main/models.go)).

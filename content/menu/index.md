@@ -7,7 +7,7 @@ headless = true
 - External Services
   - [Ombi]({{< relref "/docs/ombi" >}})
   - [(re)CAPTCHA]({{< relref "/docs/captcha" >}})
-  - [Chat bots]({{< relref "/docs/bots" >}})
+  - [Chat Bots]({{< relref "/docs/bots" >}})
     - [Discord]({{< relref "/docs/bots/discord" >}})
       - [FAQ]({{< relref "/docs/bots/discord-faq" >}})
     - [Telegram]({{< relref "/docs/bots/telegram" >}})

@@ -6,6 +6,9 @@ draft: false
 
 # jfa-go wiki
 
+Stuff here will apply to the latest git version, but will probably work on older versions.
+If you desperately need info for an older version, browse through the commits to find one around the same time as the version's release.
+
 You can find the source for this wiki [here](https://github.com/hrfee/jfa-go-wiki).
 
 If you think something's missing here, feel free to make a PR.
