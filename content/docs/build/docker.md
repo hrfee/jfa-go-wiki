@@ -5,17 +5,18 @@ draft: false
 ---
 
 # Docker
-For multiarch support, the provided `Dockerfile` uses Docker [buildx](https://github.com/docker/buildx), which means you can't just build it with your regular `docker build`. To use it, you need to enable experimental features in `/etc/docker/daemon.json` or `$HOME/.docker/config.json` or instead by setting the environment variable `DOCKER_CLI_EXPERIMENTAL=enabled` to temporarily enable it.
+To build and load the container, run 
+```shell
+$ git clone https://github.com/hrfee/jfa-go.git
+$ cd jfa-go/
+$ docker buildx build -t hrfee/jfa-go:unstable --load .
+```
+## BuildX note
+For multiarch support, the provided `Dockerfile` uses Docker [buildx](https://github.com/docker/buildx). In the past, this feature was experimental and required enabling manually. It should now be included by default. If docker complains it has no "buildx", try updating or enabling experimental features in `/etc/docker/daemon.json` or `$HOME/.docker/config.json`, or instead by setting the environment variable `DOCKER_CLI_EXPERIMENTAL=enabled` to temporarily enable it.
 ```shell
 $ cat /etc/docker/daemon.json 
 {
     "experimental": true
 }
 ```
-You should then be able to run `docker buildx` and get a help page. If not, see the [build instructions](https://github.com/docker/buildx#building) to manually install it.
-To build and load the container, you can then run 
-```shell
-$ git clone https://github.com/hrfee/jfa-go.git
-$ cd jfa-go/
-$ docker buildx build -t hrfee/jfa-go:unstable --load .
-```
+If that doesn't work, see the [build instructions](https://github.com/docker/buildx#building) to manually install it.
