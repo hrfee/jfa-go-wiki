@@ -16,7 +16,7 @@ Custom CSS can be achieved by modifying `css/dark.css` in the source code, and t
 
 ## HTML
 
-One can specify a path to a folder containing customized HTML files with the `files/html_templates` setting. Any files that match the names of jfa-go's internal templates will be loaded instead. The files use go's built in templating language, so familiarize yourself with it first ([a good resource](https://blog.gopheracademy.com/advent-2017/using-go-templates/)) so you know what different parts do. You can find the internal templates [here](https://github.com/hrfee/jfa-go/tree/main/html).
+One can specify a path to a folder containing customized HTML files with the `files/html_templates` setting. Any files that match the names of jfa-go's internal templates will be loaded instead. The files use go's built in templating language, so familiarize yourself with it first ([a good resource](https://blog.gopheracademy.com/advent-2017/using-go-templates/)) so you know what different parts do. You can find the internal templates [here](https://github.com/hrfee/jfa-go/tree/main/html), **HOWEVER**: These files are modified a bit during the build process, so they won't work by default! A fix is to compile the program, then take the files from there. See instructions [here](https://wiki.jfa-go.com/docs/build/binary/); build with `INTERNAL=off`, and valid HTML files will then be found in `build/data/html/`.
 
 ## Text/Translation
 
