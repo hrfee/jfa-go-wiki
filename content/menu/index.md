@@ -20,6 +20,7 @@ headless = true
   - [Binaries]({{< relref "/docs/build/binary" >}})
   - [Docker]({{< relref "/docs/build/docker" >}})
 - [Development]({{< relref "/docs/dev" >}})
+  - [Adding Emails/Messages]({{< relref "/docs/adding-emails" >}})
   - [Web API Docs](https://api.jfa-go.com)
 - [Password Resets]({{< relref "/docs/pwr/" >}})
   - [Password Resets outside local network]({{< relref "/docs/pwr/remote-network" >}})
