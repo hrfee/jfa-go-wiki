@@ -1,6 +1,6 @@
 ---
 title: "Matrix Bot Setup"
-date: 2024-08-10T18:40:17Z
+date: 2024-08-10T20:13:59Z
 draft: false
 ---
 
@@ -48,6 +48,6 @@ If adding your account through the wizard in jfa-go doesn't work, you can get th
 
 ## End-to-end encryption
 
-As of commit [0445492](https://github.com/hrfee/jfa-go/commit/0445492), Matrix end-to-end encryption is fully functional, as the hard parts are now taken care of by (new to me) [cryptohelper](https://pkg.go.dev/maunium.net/go/mautrix/crypto/cryptohelper) package. When building with a Makefile, enable with `E2EE=on`. It can be enabled/disabled in the Matrix settings section, near the bottom. The path to the SQLite3 database used for encryption keys can be found in (Advanced) File Storage > Matrix encryption DB.
+As of commit [69569e](https://github.com/hrfee/jfa-go/commit/69569e), Matrix end-to-end encryption is fully functional, as the hard parts are now taken care of by (new to me) [cryptohelper](https://pkg.go.dev/maunium.net/go/mautrix/crypto/cryptohelper) package. When building with a Makefile, enable with `E2EE=on`. It can be enabled/disabled in the Matrix settings section, near the bottom. The path to the SQLite3 database used for encryption keys can be found in (Advanced) File Storage > Matrix encryption DB.
 
 **However**, not all releases support it! The feature currently depends on the [go-sqlite3](https://wiki.jfa-go.com/docs/tls/) driver, which requires CGO and cross-compiling (and the associated toolchain headaches). Cross compilation is only done by the CI for certain architectures & OSes. If the setting appears missing for you, you'll have to compile it for yourself.
