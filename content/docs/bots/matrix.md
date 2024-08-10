@@ -1,6 +1,6 @@
 ---
 title: "Matrix Bot Setup"
-date: 2021-06-23T17:30:30+01:00
+date: 2024-08-10T18:40:17Z
 draft: false
 ---
 
@@ -48,6 +48,4 @@ If adding your account through the wizard in jfa-go doesn't work, you can get th
 
 ## End-to-end encryption
 
-There is very experimental support for end-to-end encryption, however you must compile jfa-go manually to enable it with `make all E2EE=on`. After compilation, checking "Advanced settings" in Settings will show a toggle for it under the Matrix section. Receiving messages is currently broken, so the `!lang` command will not work for users. 
-
-If you have any know-how on implementing this in any language (preferably with one of the `mautrix` libraries), help would be appreciated.
+As of commit [0445492](https://github.com/hrfee/jfa-go/commit/0445492), Matrix end-to-end encryption is fully functional, as the hard parts are now taken care of by (new to me) [cryptohelper](https://pkg.go.dev/maunium.net/go/mautrix/crypto/cryptohelper) package. When building with a Makefile, enable with `E2EE=on`. It can be enabled/disabled in the Matrix settings section, near the bottom. The path to the SQLite3 database used for encryption keys can be found in (Advanced) File Storage > Matrix encryption DB.
