@@ -21,6 +21,7 @@ headless = true
   - [Docker]({{< relref "/docs/build/docker" >}})
 - [Development]({{< relref "/docs/dev" >}})
   - [Adding Emails/Messages]({{< relref "/docs/adding-emails" >}})
+  - [Webhooks]({{< relref "/docs/webhooks" >}})
   - [Web API Docs](https://api.jfa-go.com)
 - [Password Resets]({{< relref "/docs/pwr/" >}})
   - [Password Resets outside local network]({{< relref "/docs/pwr/remote-network" >}})
