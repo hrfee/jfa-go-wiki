@@ -5,18 +5,21 @@ draft: false
 ---
 
 # Docker
-To build and load the container, run 
-```shell
-$ git clone https://github.com/hrfee/jfa-go.git
-$ cd jfa-go/
-$ docker buildx build -t hrfee/jfa-go:unstable --load .
+As mentioned in the [Binary section](/docs/build/binary), a prerequisite container is used to build jfa-go by the CI. This is also used in the supplied `Dockerfile`. Ths image is currently only published for `arm64`. You're probably using `amd64`, so you'll need to build the image yourself:
+
 ```
-## BuildX note
-For multiarch support, the provided `Dockerfile` uses Docker [buildx](https://github.com/docker/buildx). In the past, this feature was experimental and required enabling manually. It should now be included by default. If docker complains it has no "buildx", try updating or enabling experimental features in `/etc/docker/daemon.json` or `$HOME/.docker/config.json`, or instead by setting the environment variable `DOCKER_CLI_EXPERIMENTAL=enabled` to temporarily enable it.
-```shell
-$ cat /etc/docker/daemon.json 
-{
-    "experimental": true
-}
+# git clone https://github.com/hrfee/jfa-go-build-docker.git
+# cd jfa-go-build-docker
+# docker buildx build -t docker.io/hrfee/jfa-go-build-docker:latest .
 ```
-If that doesn't work, see the [build instructions](https://github.com/docker/buildx#building) to manually install it.
+
+Now, somewhere else, build the actual project similarly:
+
+```
+# git clone https://github.com/hrfee/jfa-go.git
+# cd jfa-go/
+# docker buildx build -t hrfee/jfa-go:unstable .
+```
+
+## BuildKit note
+For better multi-arch support, the main and prerequisite Dockerfiles take advantage of [BuildKit](https://docs.docker.com/build/buildkit/), the image builder included with Docker as of 23.0. It should also be included with Podman. You may have to install BuildKit/BuildX manually if you have an older version. 

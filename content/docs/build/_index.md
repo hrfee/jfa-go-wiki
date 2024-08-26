@@ -6,4 +6,5 @@ draft: false
 
 # Building from source
 
-See the sidebar for instructions for building a binary or Docker container, as well as helpful information for those wishing to contribute.
+This section describes how to compile the software yourself.
+Further details on the invididual steps taken can be found in the [Development section](/docs/dev).

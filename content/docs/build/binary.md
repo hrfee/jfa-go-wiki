@@ -5,41 +5,57 @@ draft: false
 ---
 
 # Building binaries
-* Note: The build process doesn't really work on Windows, and I doubt there's a need for first class support. Your best bet is to build in WSL with either method below and the `GOOS=windows` environment variable set.
 
-To build, you need to compile the typescript and go, and generate email templates and config files. The build scripts were mostly ripped out of jf-accounts, so you'll need similar dependencies:
+You should build jfa-go on Linux or macOS, or in WSL. You could probably get it to work in Windows otherwise but don't torture yourself. Set the envvar `GOOS=windows` to build windows binaries with the Makefile.
+
+## Dependencies
+
+Build dependencies are written in Javascript and Go, both of which are needed for compilation anyway. The list of all deps are as follows: 
 ```
 required:
+    make (probably provided by some build tools package you already have)
     git
-    python >= 3.6
-    go >= 1.20
+    go >= 1.22 (sorry, I think some dependency requires this)
     node.js and npm (for tsc/esbuild, tailwind/a17t, mjml, remixicon, markdown parser & uncss)
 optional:
-    libayatana-appindicator or equivalent (if building with tray icon on linux)
+    libayatana-appindicator(3) or equivalent (if building with tray icon [TRAY=on] on linux)
+    libolm-dev or equivalent (if building with Matrix E2EE, disable with [E2EE=off])
     gcc-mingw-w64-x86-64 or equivalent (if cross-compiling for windows on linux/macOS)
-    upx (to compress the executable)
+    python (for development -only-, some rarely used helper scripts are written in this)
 ```
-The main dependencies of the program will be automatically downloaded on compilation and can be seen in [go.mod](https://github.com/hrfee/jfa-go/blob/main/go.mod).
+
+The main Go dependencies are downloaded when building, and can be seen in [go.mod](https://github.com/hrfee/jfa-go/blob/main/go.mod).
+
+## Suggestion: Docker
+Binaries and docker images are built in the CI with a prerequisite docker image, which has all dependencies installed, as well as those needed for cross-compiling.
+The Dockerfile is [available on GitHub](https://github.com/hrfee/jfa-go-build-docker), and a pre-built image is [available on Docker Hub](https://hub.docker.com/r/hrfee/jfa-go-build-docker) for arm64 (The architecture of my CI server).
 
 ## Makefile
-
 ```shell
 $ git clone https://github.com/hrfee/jfa-go
 $ cd jfa-go
-$ make all # [DEBUG=on] [INTERNAL=off] [UPDATER=on/docker] [TRAY=on] [GOESBUILD=on] [RACE=on] [...]
+$ npm i
+$ make # [DEBUG=on] [INTERNAL=off] [UPDATER=on/docker] [TRAY=on] [E2EE=off] [GOESBUILD=on] [RACE=on] [...]
 $ ls build/
 jfa-go
 ```
-A Makefile is provided, which requires the `make` command. Simply clone the repository and run `make all` to grab all necessary dependencies for go/python/node, compile everything and place the executable and app data inside `build/`. You can optionally compress the executable by running `make compress` after.
 
-* If you get an error from npm regarding esbuild, this is because a precompiled binary for your system's architecture isn't available on npm. run `make all GOESBUILD=on` instead to have it compiled instead.
 
-* You can optionally provide the path/name of the `go` executable manually with `make all GOBINARY=<path to go>`.
+A Makefile is provided, which requires the `make` command. Simply clone the repository and run `make npm` (or just `npm i`) to grab node.js dependencies, then `make` to compile everything and place the executable (and app data if `INTERNAL=off`) inside `build/`.
 
-* More build-time variables exist, which are explained on the [contributing page](/docs/dev).
+* If you get an error from npm regarding esbuild, this is because a precompiled binary for your system's architecture isn't available on npm. run `make` with `GOESBUILD=on` instead to have it compiled instead.
+
+* If you get some kind of pkg-config error, you probably missed a dependency. Install what it tells you or try with `TRAY=off` or `E2EE=off` if you don't care about either feature.
+
+* You can optionally provide the path/name of the `go` executable manually with `make GOBINARY=<path to go>`.
+
+* This is a proper Makefile (unlike it used to be), so compilation steps should only be performed when changes occur.
+  * `make precompile` will do everything but compile the executable, useful if you want to modify some stuff before it's embedded in the executable.
+
+* More build-time envvars exist, which should be relatively clear in the Makefile itself. The most relevant ones are described in [Development](/docs/dev/#environment-variables).
 
 ## Goreleaser
-[goreleaser](https://github.com/goreleaser/goreleaser) is used to publish the packages seen in the release section. The `scripts/version.sh` wrapper generates the version and provides it to goreleaser with an environment variable.
+[goreleaser](https://github.com/goreleaser/goreleaser) is used to build and publish the packages seen in the release section and on [dl.jfa-go.com](https://dl.jfa-go.com). It compiles for multiple architectures, and expects all cross-compilation dependencies are available (as in the [prerequisite docker image](https://github.com/hrfee/jfa-go-build-docker)). The `scripts/version.sh` wrapper generates build time environment variables (version, shortcommit, etc.) which goreleaser needs. It also pulls some environment variables itself, which are supplied by the CI. Internally, it uses the Makefile for everything but compilation, so *make* sure `make` is installed along with the [above deps](#dependencies).
 
 The executables will be placed in `dist/`.
 * To generate executables for multiple platforms:
@@ -47,7 +63,6 @@ The executables will be placed in `dist/`.
 $ ./scripts/version.sh goreleaser build --snapshot --clean
 ```
 
-* To generate package archives that include `LICENSE` and `README.md`:
+* To generate package archives (zips, apks, debs, rpms) that include `LICENSE` and `README.md`:
 ```shell
-$ ./scripts/version.sh goreleaser --snapshot --skip-publish --clean
-```
+$ ./scripts/version.sh goreleaser --snapshot --skip=publish --clean
