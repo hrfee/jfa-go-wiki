@@ -53,4 +53,6 @@ jfa-go will need access to your Jellyfin config directory, as this is where it p
 
 The prompt given by Jellyfin (*"The following file has been created..."*) doesn't explain to the user that they need to check their email/contact method, and if using Link or Internal resets, you ideally don't want the Enter PIN page to show at all. 
 
-[This comment by @Rezer](https://github.com/hrfee/jfa-go/issues/240#issuecomment-1779875680) gives some suggestions on how to customise Jellyfin's HTML and CSS to avoid such references, and even point directly to "My Account" so resets only happen through jfa-go.
+[This comment by @Rezer](https://github.com/hrfee/jfa-go/issues/240#issuecomment-1779875680) gives some suggestions on how to customize Jellyfin's HTML and CSS to avoid such references, and even point directly to "My Account" so resets only happen through jfa-go.
+
+Additionally, [@BobHasNoSoul](https://github.com/BobHasNoSoul)'s [jellyfin-mods](https://github.com/BobHasNoSoul/jellyfin-mods) list contains lots of guides for customizing Jellyfin in general which you might find useful.
