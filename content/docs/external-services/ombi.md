@@ -1,11 +1,13 @@
 ---
 title: "Ombi"
-date: 84dbe7da47864118a419a2c0488b5ae4
+date: 2023-10-04 12:22:19.000000000 +0100
 draft: false
+weight: 2
 ---
 
-# Warning
-The Ombi integration has a frustrating issue that has locked at least 2 people out of their Ombi admin account. Despite my best efforts, I have not been able to find the cause. **If you wish to use this integration, I recommend setting up backups of your Ombi database**.
+# Ombi
+## Warning
+The Ombi integration has a frustrating issue that has locked at least 2 people out of their Ombi admin account. Despite my best efforts, I have not been able to find the cause. **If you wish to use this integration, I recommend setting up backups of your Ombi database**. It might also be wise to try out [Jellyseerr](https://github.com/fallenbagel/jellyseerr) and see if you prefer it, the [jfa-go integration]({{<relref "/docs/external-services/jellyseerr" >}}) is much better.
 
 In the event that you experience the bug and do not have a recent backup, you can use the API key you gave jfa-go to create a new Admin account, from which you can reset your personal one:
 1) Visit `ombi-address:port/swagger`.

@@ -1,7 +1,8 @@
 ---
-title: "Build binaries"
+title: "Binaries"
 date: 2021-06-23T17:30:30+01:00
 draft: false
+weight: 1
 ---
 
 # Building binaries
@@ -27,8 +28,8 @@ optional:
 The main Go dependencies are downloaded when building, and can be seen in [go.mod](https://github.com/hrfee/jfa-go/blob/main/go.mod).
 
 ## Suggestion: Docker
-Binaries and docker images are built in the CI with a prerequisite docker image, which has all dependencies installed, as well as those needed for cross-compiling.
-The Dockerfile is [available on GitHub](https://github.com/hrfee/jfa-go-build-docker), and a pre-built image is [available on Docker Hub](https://hub.docker.com/r/hrfee/jfa-go-build-docker) for arm64 (The architecture of my CI server).
+
+If you're comfortable with containers you might prefer building using the jfa-go-build-docker image, which includes all dependencies as well as bits for cross-compiling. The Dockerfile is [available on GitHub](https://github.com/hrfee/jfa-go-build-docker), and a pre-built image is [available on Docker Hub](https://hub.docker.com/r/hrfee/jfa-go-build-docker), sadly only for arm64 (The architecture of my CI server).
 
 ## Makefile
 ```shell

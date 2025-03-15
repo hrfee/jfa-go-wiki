@@ -3,9 +3,9 @@ languageCode = "en"
 title = "jfa-go wiki"
 theme = "book"
 copyright = "&copy; <a href=\"https://github.com/hrfee\">Harvey Tindall</a> 2024"
-Paginate = 1
 enableRobotsTXT = true
 enableGitInfo = true
+sectionPagesMenu = 'docs'
 
 [params]
 BookMenuBundle = "/menu"
@@ -25,3 +25,6 @@ email = "hrfee@hrfee.dev"
 
 [params.social.config]
 platforms = ["github", "email"]
+
+[pagination]
+pagerSize = 1

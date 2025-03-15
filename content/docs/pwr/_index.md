@@ -2,6 +2,7 @@
 title: "Password Resets"
 date: 2023-09-09T13:32:35+01:00
 draft: false
+weight: 15
 ---
 
 ## Password Reset Methods
@@ -13,7 +14,7 @@ There are 4 main methods for facilitating password resets. They are ordered from
 
 ## Pros/Cons
 
-{{< include-html "content/docs/pwr/pwr-pros-cons.html" >}}
+{{< include-html "static/pwr/pwr-pros-cons.html" >}}
 
 ## Setting them up
 

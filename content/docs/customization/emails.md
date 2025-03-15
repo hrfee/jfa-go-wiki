@@ -1,7 +1,8 @@
 ---
-title: "Email/Message customization"
+title: "Email/Messages"
 date: 2021-06-23T19:59:33+01:00
 draft: false
+weight: 1
 ---
 
 # Email/Message customization
