@@ -2,11 +2,12 @@
 title: "Adding Emails/Messages"
 date: 2024-07-28T15:47:44+01:00
 draft: false
+weight: 2
 ---
 
-# Adding Emails/Messages
+# My worst nightmare
 
-Wrote this so I can maintain sanity next time I have to do it, but for anyone else who is adding a new email/message type to jfa-go, these notes might help.
+I wrote this so I can maintain sanity next time I have to do it, but for anyone else who is adding a new email/message type to jfa-go, these notes might help.
 
 
 For an example, we're adding a new email to tell the user their dog ran away.

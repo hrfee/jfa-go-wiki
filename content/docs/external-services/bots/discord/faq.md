@@ -1,7 +1,8 @@
 ---
-title: "Discord FAQ"
+title: "FAQ"
 date: 2022-01-13T22:40:18+01:00
 draft: false
+weight: 2
 ---
 
 # Discord FAQ

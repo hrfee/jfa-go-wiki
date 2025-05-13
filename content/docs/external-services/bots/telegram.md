@@ -1,10 +1,14 @@
 ---
-title: "Telegram Bot Setup"
+title: "Telegram"
 date: 2021-06-23T17:30:30+01:00 
 draft: false
+weight: 2
 ---
 
 # Telegram bot setup
+
+To use the Telegram integration, you must create a Telegram bot through their odd bot interface. It's one of the easiest ones to set up.
+
 ## Instructions
 
 * Message the [BotFather](https://t.me/BotFather) with `/newbot` to start creating a bot.

@@ -1,16 +1,20 @@
 ---
-title: "CAPTCHA/reCAPTCHA"
+title: "(re)CAPTCHA"
 date: 2023-06-15T13:07:30+01:00
 draft: false
+weight: 3
 ---
 
 # CAPTCHA
+
+## Options
 
 * CAPTCHAs can be required on sign-up to verify the human-ness of a potential user.
 * An integrated CAPTCHA service is available, however it can be unreliable, and often rejects correct answers.
 * Google's reCAPTCHA is available as an option, but requires a little setup.
 
-# reCAPTCHA Setup
+## reCAPTCHA
+### Setup
 * First, ensure your site is accessible from an external domain, as Google will need this.
 
 1) Visit [Register a new site](https://www.google.com/recaptcha/admin/create). Fill in the label, add your domain(s) (just the domain, no subpath, protocol or port), and **Choose the "Challenge (v2) / I'm not a robot Checkbox"** reCAPTCHA type.

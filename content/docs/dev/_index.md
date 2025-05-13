@@ -1,7 +1,8 @@
 ---
-title: "Building/Contributing for developers"
+title: "Development"
 date: 2021-07-25T00:33:36+01:00
 draft: false
+weight: 70
 ---
 # Development notes
 
@@ -20,7 +21,7 @@ Integrations which synchronize user data with Jellyfin/jfa-go should ideally imp
 
 The Makefile is broken up into sections which depend on each other. When calling `make`, steps are performed only if there have been changes (i.e. typescript compiled when *.ts is changed). A few things, like build scripts, do not have their changes tracked. If you changed one of these, you can run `make clean` first before `make` to ensure your changes are used.
 
-Below is an outline of the steps performed, by the variable used to call them in the Makefile. The ones LIKE_THIS are variables which you can't do `make THIS_WITH`, the lowercase ones you can.
+Below is an outline of the steps performed, by the variable used to call them in the Makefile. Only the lowercase ones are call-able with `make <xyz>`.
 
 |Step|Purpose|
 |----|-------|

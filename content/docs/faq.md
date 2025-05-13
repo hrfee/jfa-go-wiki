@@ -2,6 +2,7 @@
 title: "FAQ"
 date: 2021-06-23T17:30:30+01:00
 draft: false
+weight: 10
 ---
 
 ## Jellyfin says "Try again within your home network" when trying to reset password 
@@ -58,7 +59,7 @@ This should be unlikely to happen post [f6fdd41](https://github.com/hrfee/jfa-go
 
 ## I set up the Ombi integration, now i'm locked out of Ombi.
 
-Sorry if this has occurred, you can regain access by following [the guide here]({{<relref "/docs/ombi" >}}).
+Sorry if this has occurred, you can regain access by following [the guide here]({{<relref "/docs/external-services/ombi" >}}).
 
 ## Does this need to be installed on the same host as Jellyfin?
 
