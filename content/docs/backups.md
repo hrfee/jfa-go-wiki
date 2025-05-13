@@ -10,6 +10,8 @@ Bugs may occasionally cause issues with jfa-go, and occasionally these issues ar
 
 Visit Settings > Backups to enable scheduled backups, set the frequency of the backups (every *n* minutes), and the number of most recent backups to keep.
 
+Data corruption might happen after an update, so it's wise to keep a backup from the previous version. Enable "Keep 1 backup from each previous version" to do so. The "keep n backups" option will delete the oldest per-version backups but leave the most recent one.
+
 ## List backups
 Press the "Backups" button at the top of Settings. A list of all stored backups will be shown.
 
@@ -36,3 +38,4 @@ If you haven't got a `.bak` file, you should be able to find them in `<your data
 
 Once you've found a file, simply run `<your usual jfa-go start command> -restore <bak file path>`.
 The application will start normally after the restore has completed.
+
