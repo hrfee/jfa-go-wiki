@@ -5,6 +5,10 @@ draft: false
 weight: 10
 ---
 
+## My URLs are incorrect!
+
+Make sure General > "External jfa-go URL" is set to the URL you'd access jfa-go at. If you're reverse proxying to a subfolder (e.g. my.url/accounts), also put the subfolder (e.g. "/accounts") in "Reverse Proxy subfolder" (*f.k.a. "URL Base"*).
+
 ## Jellyfin says "Try again within your home network" when trying to reset password 
 
 ([issue](https://github.com/hrfee/jellyfin-accounts/issues/12))
