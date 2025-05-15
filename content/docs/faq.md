@@ -9,6 +9,10 @@ weight: 10
 
 Make sure General > "External jfa-go URL" is set to the URL you'd access jfa-go at. If you're reverse proxying to a subfolder (e.g. my.url/accounts), also put the subfolder (e.g. "/accounts") in "Reverse Proxy subfolder" (*f.k.a. "URL Base"*).
 
+## I don't want users seeing the admin page!
+
+You can change where the admin page and "My Account" page are URL-wise by enabling Advanced Settings and editing the subpaths in Settings > URL Paths. Since [b47a481](https://github.com/hrfee/jfa-go/commit/b47a481678ded7f34e460c52c92956cd4daafa49) (14/05/2025).
+
 ## Jellyfin says "Try again within your home network" when trying to reset password 
 
 ([issue](https://github.com/hrfee/jellyfin-accounts/issues/12))
