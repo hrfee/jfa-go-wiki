@@ -26,7 +26,7 @@ Note this feature was merged on 31 July 2024, and a stable update has not been r
 
 ### Nothing's working!
 
-Make sure you got the right API key. During Jellyseerr's setup they show you an API right after logging in to Jellyfin, **this is for Jellyfin, not Jellyseerr**! This is also shown in the "Jellyfin" tab in the programs settings. Make sure to **get the code from the first tab of settings**!.
+Make sure you got the right API key. During Jellyseerr's setup they show you an API key right after logging in to Jellyfin, **this is for Jellyfin, not Jellyseerr**! This is also shown in the "Jellyfin" tab in the programs settings. Make sure to **get the code from the first tab of settings**!.
 
 ### Accounts deleted in jfa-go/Jellyfin are still there on Jellyseerr!
 
