@@ -86,3 +86,12 @@ On dependencies, `depends_true/false` take the `setting` or `section` value (not
     description: SMTP connection settings.
     depends_true: email|method
 ```
+
+## Tips
+
+### Debugging API Clients (MB (Jellyfin/Emby), Ombi, Jellyseerr)
+
+Man-in-the-middle-ing the API endpoint is a great idea. I initially used socat (`socat -v TCP-LISTEN:<some port you give jfa-go> TCP:<address and port of real endpoint>`), which prints the things travelling through the proxy, but mitmproxy is much better as it focuses on HTTP and breaks things down by request, with timings and such, much like a browser console's network tab:
+```shell
+$ mitmproxy --mode reverse:http://<address and port of real endpoint> -p <some port you give jfa-go>
+```
