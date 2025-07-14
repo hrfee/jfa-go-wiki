@@ -21,12 +21,15 @@ weight = 1
 Note this feature was merged on 31 July 2024, and a stable update has not been released since as of March 2025, so you'll need to use the unstable release.
 
 * Enable in settings, supply a server URL and an API key, which you can get in the first tab of Jellyseerr's settings. Enable "Import existing users to Jellyseerr" to import data (contact methods) of your existing users, once everything appears to be done you can turn this setting off.
+* Make sure "Enable CSRF Protection" is **disabled** in Jellyseerr's network settings!
 
 ## FAQ
 
 ### Nothing's working!
 
 Make sure you got the right API key. During Jellyseerr's setup they show you an API key right after logging in to Jellyfin, **this is for Jellyfin, not Jellyseerr**! This is also shown in the "Jellyfin" tab in the programs settings. Make sure to **get the code from the first tab of settings**!.
+
+Also make sure "Enable CSRF Protection" is **disabled** in Jellyseerr's network settings.
 
 ### Accounts deleted in jfa-go/Jellyfin are still there on Jellyseerr!
 
