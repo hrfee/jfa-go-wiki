@@ -7,20 +7,27 @@ weight: 12
 
 # Reverse Proxying
 
-Reverse proxying should be really easy.
+## General
+Reverse proxying should be relatively easy.
+
+General rules:
 * If you're proxying to a subdomain, e.g `accounts.jellyf.in/`, a `proxy_pass` or equivalent is enough.
+* Set "External jfa-go URL" in Settings > General to where the root of jfa-go will be. With default settings, this is where you access the admin page. It should be a full url, e.g. `https://accounts.jellyf.in` or `https://jellyf.in/jfa-go`.
+  * If you've changed the admin page path in Settings > "URL Paths", **don't** include it in "External jfa-go URL".
+* If you're proxying to a subfolder, set "Reverse proxy subfolder" to the subfolder, including the preceding "/", e.g. `/jfa-go`.
+  * Proxying to a subfolder is only supported for versions > 0.2.2.
+  * Versions > v0.3.0 should be proxied to `<jfa-go address>/<your subfolder>`.
+  * If you're placing jfa-go under the same subdomain as Jellyfin, make sure no CSP header is set for jfa-go's subfolder (see example below for NGINX).
+* If you're proxying to multiple URLs (e.g. having one on your own, admin-facing domain and one on a user-facing domain), and you want URLs from the web app (such as invite links) to use the same URL you're accessing the page from, enable "Use reverse-proxy reported "Host" when possible". **Make sure your reverse proxy sets the "Host" and "X-Forwarded-Proto" headers**.
 * If you choose to use jfa-go's IP logging, you'll need to make sure the proxy passes in the correct IP.
   * `X-Real-IP` or `X-Forwarded-For` will work.
   * The nginx and IIS examples includes at least one of these headers. You'll have to figure it out yourself for other proxies.
-* Proxying to a subfolder is only supported for versions > 0.2.2.
-  * Versions > v0.3.0 don't need the URL Base stripped, but should be proxied to `<jfa-go address>/<URL base>` instead.
-  * **Make sure to set the URL base ("Reverse Proxy subfolder") in Settings > General (`ui > url_base` in config.ini).** It should be the subfolder **only**, i.e. `/accounts`.
-  * If you're placing it under the same subdomain as Jellyfin, make sure no CSP header is set for jfa-go's subfolder (see example below for NGINX).
-  * Versions <= v0.3.0 require the proxy to strip the URL base.
 
+
+## Examples
 Below are some simple examples of reverse proxy configs.
 
-## NGINX (Subdomain)
+### NGINX (Subdomain)
 ```nginx
 server {
     listen 80;
@@ -42,16 +49,15 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_set_header X-Forwarded-Protocol $scheme;
         proxy_set_header X-Forwarded-Host $http_host;
         proxy_buffering off;
     }
 }
 ```
 
-## NGINX (Subfolder on `/accounts` Jellyfin subdomain)
+### NGINX (Subfolder on `/accounts` Jellyfin subdomain)
 
-Make sure to set your Reverse Proxy subfolder to `/accounts` in Settings > General.
+As mentioned, make sure to set "External jfa-go URL" to `https://jellyfin.your.domain/accounts`, and "Reverse Proxy subfolder" to `/accounts`.
 credit to [IngwiePhoenix](https://github.com/IngwiePhoenix).
 ```nginx
 server {
@@ -85,15 +91,15 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_set_header X-Forwarded-Protocol $scheme;
         proxy_set_header X-Forwarded-Host $http_host;
         proxy_buffering off;
     }
 }
 ```
 
-## Traefik (`/jfa` subfolder)
+### Traefik (`/jfa` subfolder)
 Taken from [#53](https://github.com/hrfee/jfa-go/issues/53).
+I'm not sure if this will include the X-Forwarded* headers, if you know/know a fix let me know.
 ```yaml
   jfa-go:
     # rest of your config
@@ -103,7 +109,7 @@ Taken from [#53](https://github.com/hrfee/jfa-go/issues/53).
       - "traefik.http.routers.jfa-go.tls=true"
 ```
 
-## IIS (`/accounts` subfolder)
+### IIS (`/accounts` subfolder)
 From [#324](https://github.com/hrfee/jfa-go/discussions/324), credit to [kimboslice99](https://github.com/kimboslice99).
 This config is for the `/accounts` subfolder. To change, adjust the `<action type="Rewrite"...` line near the bottom to
 `<action type="Rewrite" url="http://localhost:8056/insert_subfolder_path_here/{R:1}" />`
