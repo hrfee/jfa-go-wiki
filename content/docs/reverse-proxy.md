@@ -22,6 +22,7 @@ General rules:
 * If you choose to use jfa-go's IP logging, you'll need to make sure the proxy passes in the correct IP.
   * `X-Real-IP` or `X-Forwarded-For` will work.
   * The nginx and IIS examples includes at least one of these headers. You'll have to figure it out yourself for other proxies.
+* **Cloudflare Users**: Make sure "Strong ETag headers" are respected. [This Cloudflare article](https://developers.cloudflare.com/cache/reference/etag-headers/#strong-etags) describes how. If you do not, parts of the page may load older version and mess things up in really irritating ways.
 
 
 ## Examples
