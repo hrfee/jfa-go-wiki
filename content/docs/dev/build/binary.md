@@ -16,7 +16,7 @@ Build dependencies are written in Javascript and Go, both of which are needed fo
 required:
     make (probably provided by some build tools package you already have)
     git
-    go >= 1.22 (sorry, I think some dependency requires this)
+    go >= 1.24 (sorry, I think some dependency requires this)
     node.js and npm (for tsc/esbuild, tailwind/a17t, mjml, remixicon, markdown parser & uncss)
 optional:
     libayatana-appindicator(3) or equivalent (if building with tray icon [TRAY=on] on linux)
